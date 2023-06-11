@@ -23,7 +23,8 @@ This is a mini RestFul API project. This application has following abilities:
     1. Run: "composer install"
     2. Copy ".env.example to .env"
     3. Run: "php artisan migrate"
-    4. To Run tests suits, Run command: "./vendor/bin/phpunit"
+    4. Run: php artisan jwt:secret
+    5. To Run tests suits, Run command: "./vendor/bin/phpunit"
 
 ### To run a application:
     Run: "php artisan serve" and open "http://127.0.0.1:8000" to your browser or API request client
