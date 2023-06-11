@@ -18,6 +18,7 @@ use App\Traits\Common;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Exception;
 
 /**
  * Class CandidateService
@@ -90,6 +91,15 @@ class CandidateService implements CandidateInterface
     }
 
     public function searchCandidate($keyword){
-       return $this->candidate::where('first_name', 'LIKE', '%'. $keyword. '%')->orWhere('last_name', 'LIKE', '%'. $keyword. '%')->paginate(10);
+        $result = $this->candidate::where('first_name', 'LIKE', '%'. $keyword. '%')->orWhere('last_name', 'LIKE', '%'. $keyword. '%')->paginate(10);
+
+        if(count($result)){
+            return $result;
+        }
+        else
+        {
+            throw new Exception("no records found");
+        }   
     }
+
 }
